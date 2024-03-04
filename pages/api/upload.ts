@@ -37,10 +37,12 @@ async function uploadCertificate(
   const appendUpload: boolean | string = req.body.append || false;
   const sheets = await readSheetNames(certFile.path);
   const rows = await readXlsxFile(certFile.path, { sheet: sheets[1] });
+ 
 
   const data: ICertificate[] = [];
 
   rows.map((row, index) => {
+  
     const fullName = (row[0] as string)
       .trim()
       .split(" ")
